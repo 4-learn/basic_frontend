@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊表單</title>
+</head>
+<body>
+    <div class="container">
+        <h1>註冊表單</h1>
+        <form method=GET action=product.html>
+            <label for="username">使用者名稱：</label>
+            <p><input type="text" id="username" name="username" placeholder="您的使用者名稱"></p>
+            
+            <label for="password">密碼：</label>
+            <p><input type="password" id="password" name="password" placeholder="您的密碼"></p>
+            
+            <label for="location">你來自：</label>
+            <select id="location" name="location">
+                <option value="台北">台北</option>
+                <option value="台中" selected>台中</option>
+                <option value="台南">台南</option>
+                <option value="高雄">高雄</option>
+            </select>
+            
+            <p>性別：</p>
+            <label><input type="radio" name="gender" value="男"> 男</label>
+            <label><input type="radio" name="gender" value="女"> 女</label>
+            <label><input type="radio" name="gender" value="其他"> 其他</label>
+
+            <p>選擇興趣愛好：</p>
+            <label><input type="checkbox" name="hobby" value="閱讀"> 閱讀</label>
+            <label><input type="checkbox" name="hobby" value="旅行"> 旅行</label>
+            <label><input type="checkbox" name="hobby" value="運動"> 運動</label>
+            <label><input type="checkbox" name="hobby" value="音樂"> 音樂</label>
+
+            <p><label for="self-intro">自我介紹：</label>
+            <p><textarea id="self-intro" name="self-intro" rows="4" cols="50" placeholder="請在此輸入自我介紹"></textarea></p>
+            
+            <p><input type="submit" value="送出"></p>
+        </form>
+    </div>
+</body>
+</html>
