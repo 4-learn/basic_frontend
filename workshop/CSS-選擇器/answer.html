@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 選擇器範例</title>
+    <style>
+        /* 元素選擇器 */
+        h1 {
+            color: blue;
+        }
+
+        /* ID 選擇器 */
+        #intro {
+            font-size: 20px;
+            color: green;
+        }
+
+        /* Class 選擇器 */
+        .highlight {
+            background-color: yellow;
+        }
+
+        /* 屬性選擇器 */
+        a[target="_blank"] {
+            color: red;
+        }
+
+        /* 虛擬 class 選擇器 */
+        p:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <!-- 元素選擇器應用於 h1 -->
+    <h1>歡迎來到我的網站</h1>
+
+    <!-- ID 選擇器應用於 p 元素 -->
+    <p id="intro">這是一段介紹文字，說明網站的主要內容。</p>
+
+    <!-- Class 選擇器應用於 p 和 span 元素 -->
+    <p class="highlight">這是一段重要的文字，需要高亮顯示。</p>
+    <span class="highlight">這是一個需要高亮顯示的短語。</span>
+
+    <!-- 屬性選擇器應用於 a 元素 -->
+    <a href="https://example.com" target="_blank">訪問範例網站</a>
+    <a href="https://example.com" target="_self">訪問範例網站</a>
+
+    <!-- 虛擬 class 選擇器應用於 p 元素 -->
+    <p>將滑鼠懸停在這段文字上以查看效果。</p>
+</body>
+</html>
