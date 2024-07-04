@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 選擇器範例</title>
+    <style>
+        /* 後代選擇器 */
+        .container p {
+            color: blue; /* 所有 .container 內的 p 元素 */
+        }
+
+        /* 直屬選擇器 */
+        .container > p {
+            font-weight: bold; /* 直屬於 .container 的 p 元素 */
+        }
+
+        /* 相鄰選擇器 */
+        h2 + p {
+            color: green; /* 與 h2 相鄰的 p 元素 */
+        }
+
+        /* 後續選擇器 */
+        h2 ~ p {
+            font-style: italic; /* 在 h2 後面的所有 p 元素 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>這是一段文字，位於 .container 內部。</p>
+        <div>
+            <p>這是一段文字，位於 .container 內部的一個 div 內。</p>
+        </div>
+        <p>這是一段直屬於 .container 的文字。</p>
+    </div>
+    <h2>這是一個標題</h2>
+    <p>這是一段與 h2 相鄰的文字。</p>
+    <p>這是一段在 h2 後面的文字。</p>
+    <div>
+        <p>這是一段在 h2 後面的文字，位於一個 div 內。</p>
+    </div>
+</body>
+</html>
