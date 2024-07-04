@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車頁面</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -10px;
+        }
+        .col {
+            flex: 1 0 30%;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+        .card {
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .card img {
+            max-width: 100%;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px 10px 0 0;
+        }
+        .card h5 {
+            margin: 0 0 10px;
+            font-size: 1.25em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .card p {
+            margin: 0 0 10px;
+            color: #555;
+        }
+        .card .price {
+            font-size: 1.5em;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .card .button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .my-4 {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">購物車頁面</h1>
+        <form method="GET" action="checkout.html">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="商品1">
+                        <h5>商品1</h5>
+                        <p class="price">NT$ 100</p>
+                        <div class="form-group">
+                            <label for="quantity1">數量</label>
+                            <select id="quantity1" name="quantity1">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="商品2">
+                        <h5>商品2</h5>
+                        <p class="price">NT$ 200</p>
+                        <div class="form-group">
+                            <label for="quantity2">數量</label>
+                            <select id="quantity2" name="quantity2">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/100" alt="商品3">
+                        <h5>商品3</h5>
+                        <p class="price">NT$ 300</p>
+                        <div class="form-group">
+                            <label for="quantity3">數量</label>
+                            <select id="quantity3" name="quantity3">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center my-4">
+                <div class="form-group">
+                    <label for="delivery">選擇取貨方式</label>
+                    <select id="delivery" name="delivery">
+                        <option value="7-11">7-11</option>
+                        <option value="family-mart">全家</option>
+                        <option value="hi-life">萊爾富</option>
+                        <option value="ok-mart">OK便利店</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address">宅即便地址</label>
+                    <input type="text" id="address" name="address" placeholder="輸入宅配地址">
+                </div>
+                <button type="submit" class="button">結帳</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
