@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天地板佈局</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .sidebar {
+            position: absolute;
+            top: 60px; /* 確保在 header 下方 */
+            left: 0;
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            height: calc(100% - 120px); /* 減去 header 和 footer 的高度 */
+            box-sizing: border-box;
+        }
+        .main-content {
+            margin-top: 60px; /* 確保在 header 下方 */
+            margin-left: 220px; /* 確保在 sidebar 右方 */
+            padding: 20px;
+            min-height: calc(100vh - 120px); /* 減去 header 和 footer 的高度 */
+        }
+        .static-element {
+            position: static;
+            background-color: #e0e0e0;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .relative-element {
+            position: relative;
+            top: 10px;
+            left: 10px;
+            background-color: #d0d0d0;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Header (固定定位)
+    </div>
+    <div class="footer">
+        Footer (固定定位)
+    </div>
+    <div class="sidebar">
+        Sidebar (絕對定位)
+    </div>
+    <div class="main-content">
+        <div class="static-element">
+            靜態定位元素
+        </div>
+        <div class="relative-element">
+            相對定位元素
+        </div>
+        <p>這裡是主要內容區域。這裡可以包含很多文字，讓我們來測試頁面滾動時固定定位元素的效果。滾動頁面時，你會看到 header 和 footer 保持固定，而側邊欄和主要內容區域會隨著滾動。</p>
+        <p>更多內容...</p>
+        <p>更多內容...</p>
+        <p>更多內容...</p>
+        <p>更多內容...</p>
+        <p>更多內容...</p>
+        <p>更多內容...</p>
+        <p>更多內容...</p>
+    </div>
+</body>
+</html>
