@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊頁面</title>
+    <!-- 引入 Bootstrap CSS 文件 -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">註冊表單</h1>
+        <form action="https://httpbin.org/post" method="POST">
+            <div class="form-group">
+                <label for="username">使用者名稱：</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="您的使用者名稱" required>
+            </div>
+            <div class="form-group">
+                <label for="password">密碼：</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="您的密碼" required>
+            </div>
+            <div class="form-group">
+                <label for="location">你來自：</label>
+                <select class="form-control" id="location" name="location" required>
+                    <option value="台北">台北</option>
+                    <option value="台中" selected>台中</option>
+                    <option value="台南">台南</option>
+                    <option value="高雄">高雄</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>性別：</label>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-2">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="male" name="gender" value="男" required>
+                            <label class="form-check-label" for="male">男</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-2">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="female" name="gender" value="女" required>
+                            <label class="form-check-label" for="female">女</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-2">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="other" name="gender" value="其他" required>
+                            <label class="form-check-label" for="other">其他</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>選擇興趣愛好：</label>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-2">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="reading" name="hobby" value="閱讀">
+                            <label class="form-check-label" for="reading">閱讀</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-2">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="traveling" name="hobby" value="旅行">
+                            <label class="form-check-label" for="traveling">旅行</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-2">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="sports" name="hobby" value="運動">
+                            <label class="form-check-label" for="sports">運動</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-2">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="music" name="hobby" value="音樂">
+                            <label class="form-check-label" for="music">音樂</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="self-intro">自我介紹：</label>
+                <textarea class="form-control" id="self-intro" name="self-intro" rows="4" placeholder="請在此輸入自我介紹"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">送出</button>
+        </form>
+    </div>
+
+    <!-- 引入 Bootstrap JS 文件和依賴的 Popper.js 以及 jQuery 文件 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
