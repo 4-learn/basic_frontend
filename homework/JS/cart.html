@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車頁面</title>
+    <!-- 引入新的 Bootstrap CSS 文件 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartDetails = JSON.parse(localStorage.getItem("cartDetails")) || {};
+            const quantities = {
+                quantity1: cartDetails.quantity1 ? cartDetails.quantity1.quantity : 0,
+                quantity2: cartDetails.quantity2 ? cartDetails.quantity2.quantity : 0,
+                quantity3: cartDetails.quantity3 ? cartDetails.quantity3.quantity : 0,
+            };
+
+            // 设置数量选择框的值
+            document.querySelector('select[name="quantity1"]').value = quantities.quantity1;
+            document.querySelector('select[name="quantity2"]').value = quantities.quantity2;
+            document.querySelector('select[name="quantity3"]').value = quantities.quantity3;
+
+            // 更新总价
+            updateTotalPrice();
+
+            // 添加事件监听器
+            document.querySelectorAll('.form-select').forEach(select => {
+                select.addEventListener('change', updateTotalPrice);
+            });
+
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert("訂單已經成立");
+            });
+
+            function updateTotalPrice() {
+                const prices = {
+                    quantity1: 100,
+                    quantity2: 200,
+                    quantity3: 300,
+                };
+
+                let total = 0;
+                Object.keys(prices).forEach(key => {
+                    const quantity = parseInt(document.querySelector(`select[name="${key}"]`).value);
+                    total += quantity * prices[key];
+                });
+
+                document.getElementById("totalPrice").textContent = `總價: NT$ ${total}`;
+            }
+        });
+    </script>
+    <style>
+      img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover; /* Optional: to maintain aspect ratio and cover the area */
+    }
+    </style>
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="text-center">購物車頁面</h1>
+        <form method="GET" action="cart.html">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>商品圖片</th>
+                            <th>商品名稱</th>
+                            <th>價格</th>
+                            <th>數量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/PNG_Test.png" class="img-fluid" alt="商品1"></td>
+                            <td>商品1</td>
+                            <td>NT$ 100</td>
+                            <td>
+                                <select class="form-select" name="quantity1">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/PNG_Test.png" class="img-fluid" alt="商品2"></td>
+                            <td>商品2</td>
+                            <td>NT$ 200</td>
+                            <td>
+                                <select class="form-select" name="quantity2">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/PNG_Test.png" class="img-fluid" alt="商品3"></td>
+                            <td>商品3</td>
+                            <td>NT$ 300</td>
+                            <td>
+                                <select class="form-select" name="quantity3">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 配送方式 -->
+            <div class="my-4">
+                <h2>配送方式</h2>
+                <div class="mb-3">
+                    <label for="storeSelect" class="form-label">超商取貨</label>
+                    <select id="storeSelect" class="form-select" name="storeSelect">
+                        <option value="7-11">7-11</option>
+                        <option value="FamilyMart">FamilyMart</option>
+                        <option value="Hi-Life">Hi-Life</option>
+                        <option value="OKMart">OKMart</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">宅即便：輸入地址</label>
+                    <input type="text" id="address" class="form-control" name="address">
+                </div>
+                <div class="text-center">
+                    <p id="totalPrice" class="h4">總價: NT$ 0</p>
+                    <button type="submit" class="btn btn-primary">結帳</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- 引入新的 Bootstrap JS 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
