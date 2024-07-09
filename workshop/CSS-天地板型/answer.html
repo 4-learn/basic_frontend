@@ -41,10 +41,10 @@
             box-sizing: border-box;
         }
         .main-content {
-            margin-top: 60px; /* 確保在 header 下方 */
-            margin-left: 220px; /* 確保在 sidebar 右方 */
+            position: relative;
+	    top: 60px; /* 確保在 header 下方 */
+            left: 220px; /* 確保在 sidebar 右方 */
             padding: 20px;
-            min-height: calc(100vh - 120px); /* 減去 header 和 footer 的高度 */
         }
         .static-element {
             position: static;
