@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車頁面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .output {
+            margin-top: 20px;
+            background-color: #dff0d8;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #d0e9c6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>購物車頁面</h1>
+        <form id="checkoutForm">
+            <h2>已購買的商品</h2>
+            <table border="1" cellspacing="0" cellpadding="10">
+                <tr>
+                    <th>商品圖片</th>
+                    <th>商品名稱</th>
+                    <th>價格</th>
+                    <th>數量</th>
+                </tr>
+                <tr>
+                    <td><img src="https://via.placeholder.com/100" alt="商品1"></td>
+                    <td>商品1</td>
+                    <td>NT$ 100</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><img src="https://via.placeholder.com/100" alt="商品2"></td>
+                    <td>商品2</td>
+                    <td>NT$ 200</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+            <h2>取貨方式</h2>
+            <p>超商取貨：</p>
+            <select name="store_pickup">
+                <option value="7-11">7-11</option>
+                <option value="FamilyMart">全家</option>
+                <option value="OKMart">OK便利商店</option>
+                <option value="HiLife">萊爾富</option>
+            </select>
+
+            <h2>宅即便</h2>
+            <label for="address">輸入地址：</label>
+            <p><input type="text" id="address" name="address" placeholder="請輸入您的地址"></p>
+
+            <p><input type="submit" value="結帳"></p>
+        </form>
+        <div id="output" class="output" style="display: none;"></div>
+    </div>
+
+    <script>
+        document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 防止表單提交
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const params = new URLSearchParams(formData).toString();
+            const url = `https://httpbin.org/post`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response:', data);
+                const outputDiv = document.getElementById('output');
+                outputDiv.style.display = 'block';
+                outputDiv.innerHTML = `
+                    <p><strong>購物成功！</strong></p>
+                    <p>訂單編號：${data.origin}</p>
+                `;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
+
