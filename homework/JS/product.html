@@ -26,7 +26,7 @@
                             <h5 class="card-title">商品1</h5>
                             <p class="card-text">NT$ 100</p>
                             <label for="quantity1" class="form-label">數量</label>
-                            <select class="form-select quantity" id="quantity1" name="quantity1" data-price="100">
+                            <select class="form-select quantity" id="quantity1" name="quantity1" data-price="100" onchange="updateSubtotal()">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -44,7 +44,7 @@
                             <h5 class="card-title">商品2</h5>
                             <p class="card-text">NT$ 200</p>
                             <label for="quantity2" class="form-label">數量</label>
-                            <select class="form-select quantity" id="quantity2" name="quantity2" data-price="200">
+                            <select class="form-select quantity" id="quantity2" name="quantity2" data-price="200" onchange="updateSubtotal()">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -62,7 +62,7 @@
                             <h5 class="card-title">商品3</h5>
                             <p class="card-text">NT$ 300</p>
                             <label for="quantity3" class="form-label">數量</label>
-                            <select class="form-select quantity" id="quantity3" name="quantity3" data-price="300">
+                            <select class="form-select quantity" id="quantity3" name="quantity3" data-price="300" onchange="updateSubtotal()">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -76,7 +76,7 @@
             </div>
             <div class="subtotal text-center">小計: NT$ <span id="subtotal">0</span></div>
             <div class="text-center my-4">
-                <button type="submit" class="btn btn-primary">結帳</button>
+                <button type="submit" class="btn btn-primary" onclick="saveCartDetails(); return false;">結帳</button>
             </div>
         </form>
     </div>
@@ -84,49 +84,38 @@
     <!-- 引入新的 Bootstrap JS 文件 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        function updateSubtotal() {
             var quantities = document.querySelectorAll('.quantity');
             var subtotalElement = document.getElementById('subtotal');
-            var form = document.getElementById('product-form');
+            var subtotal = 0;
 
             quantities.forEach(function (select) {
-                select.addEventListener('change', updateSubtotal);
+                var quantity = parseInt(select.value);
+                var price = parseInt(select.getAttribute('data-price'));
+                subtotal += quantity * price;
             });
+            subtotalElement.textContent = subtotal;
+        }
 
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                saveCartDetails();
-                window.location.href = 'cart.html';
+        function saveCartDetails() {
+            var quantities = document.querySelectorAll('.quantity');
+            var cartDetails = {};
+
+            quantities.forEach(function (select) {
+                var id = select.id;
+                var quantity = parseInt(select.value);
+                var price = parseInt(select.getAttribute('data-price'));
+                if (quantity > 0) {
+                    cartDetails[id] = {
+                        quantity: quantity,
+                        price: price,
+                        total: quantity * price
+                    };
+                }
             });
-
-            function updateSubtotal() {
-                var subtotal = 0;
-                quantities.forEach(function (select) {
-                    var quantity = parseInt(select.value);
-                    var price = parseInt(select.getAttribute('data-price'));
-                    subtotal += quantity * price;
-                });
-                subtotalElement.textContent = subtotal;
-            }
-
-            function saveCartDetails() {
-                var cartDetails = {};
-                quantities.forEach(function (select) {
-                    var id = select.id;
-                    var quantity = parseInt(select.value);
-                    var price = parseInt(select.getAttribute('data-price'));
-                    if (quantity > 0) {
-                        cartDetails[id] = {
-                            quantity: quantity,
-                            price: price,
-                            total: quantity * price
-                        };
-                    }
-                });
-                localStorage.setItem('cartDetails', JSON.stringify(cartDetails));
-            }
-        });
+            localStorage.setItem('cartDetails', JSON.stringify(cartDetails));
+            window.location.href = 'cart.html';
+        }
     </script>
 </body>
 </html>
-
