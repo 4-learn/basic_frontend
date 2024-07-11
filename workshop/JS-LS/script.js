@@ -1,10 +1,10 @@
 document.getElementById('registerForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    var username = document.getElementById('username').value.trim();
-    var password = document.getElementById('password').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var phone = document.getElementById('phone').value.trim();
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
     var gender = document.getElementById('gender').value;
     var terms = document.getElementById('terms').checked;
 
