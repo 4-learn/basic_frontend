@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Async Request with await</title>
+</head>
+<body>
+    <button id="asyncButton">Async Request with await</button>
+    <label for="num">Choose a number:</label>
+    <select name="num" id="num">
+      <option value="c">請選擇</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('asyncButton').addEventListener('click', async function() {
+            console.log('Async request start:', new Date().toLocaleTimeString());
+            
+            try {
+                const response = await fetch('http://140.127.196.78:8089/delay');
+                const data = await response.json();
+                document.getElementById('result').innerText = JSON.stringify(data);
+                console.log('Async request end:', new Date().toLocaleTimeString());
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
+
