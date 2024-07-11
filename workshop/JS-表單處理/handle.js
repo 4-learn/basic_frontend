@@ -1,11 +1,11 @@
 function handleSubmit(event) {
     event.preventDefault();
 
-    var username = document.getElementById('username').value.trim();
-    var password = document.getElementById('password').value.trim();
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
     var dropdown = document.getElementById('dropdown').value;
     var agree = document.getElementById('agree').checked;
-    var comments = document.getElementById('comments').value.trim();
+    var comments = document.getElementById('comments').value;
 
     if (username === "") {
         alert('Username cannot be empty!');
