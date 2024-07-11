@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Loop</title>
+</head>
+<body>
+    <button id="myButton">Click Me</button>
+    <label for="num">Choose a number:</label>
+    <select name="num" id="num">
+      <option value="c">請選擇</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+
+    <script>
+        function asyncLoop() {
+            return new Promise((resolve, reject) => {
+                function loop() {
+                    console.log('Looping...');
+                    setTimeout(loop, 100); // 每100ms執行一次
+                }
+                loop();
+            });
+        }
+
+        document.getElementById('myButton').addEventListener('click', function() {
+            asyncLoop();
+        });
+    </script>
+</body>
+</html>
+
