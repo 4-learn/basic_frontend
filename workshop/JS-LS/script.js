@@ -13,16 +13,17 @@ document.getElementById('registerForm').addEventListener('submit', function(even
         return;
     }
 
-    var formData = {
-        username: username,
-        password: password,
-        email: email,
-        phone: phone,
-        gender: gender,
-        terms: terms
-    };
+    var formData = 
+        '{' +
+        '"username":"' + username + '",' +
+        '"password":"' + password + '",' +
+        '"email":"' + email + '",' +
+        '"phone":"' + phone + '",' +
+        '"gender":"' + gender + '",' +
+        '"terms":' + terms +
+        '}';
 
-    localStorage.setItem('registerFormData', JSON.stringify(formData));
+    localStorage.setItem('registerFormData', formData);
     console.log('Data saved to localStorage:', formData);
 
     document.getElementById('registerForm').submit();
