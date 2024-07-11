@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Async Request</title>
+</head>
+<body>
+    <button id="asyncButton">Async Request</button>
+      <select id="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('asyncButton').addEventListener('click', function() {
+            console.log('Async request start:', new Date().toLocaleTimeString());
+            fetch('http://140.127.196.78:8089/delay')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerText = JSON.stringify(data);
+                    console.log('Async request end:', new Date().toLocaleTimeString());
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
+
